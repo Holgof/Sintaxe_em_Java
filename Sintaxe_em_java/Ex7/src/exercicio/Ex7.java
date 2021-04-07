@@ -3,14 +3,14 @@ import java.util.Scanner;
 
 public class Ex7 {
 	public static void main(String[] args) {
-		int avaliacao, total, pessimas, ruins, boas, otimas;
+		float avaliacao, total, pessimas, ruins, boas, otimas;
 		avaliacao = total = pessimas = ruins = boas = otimas = 0;
 		float percentPessimo, percentRuim, percentBom, percentOtimo;
+		String proximaAvaliacao = "";
 		Scanner input = new Scanner(System.in);
-		String proximaAvaliacao = "sim";
 		
-		do {																						//recebendo e classificando as avaliações
-			System.out.println("Insira a avaliação do serviço com um inteiro entre 0 e 100:");
+		do {																						//recebendo e classificando as avaliaÃ§Ãµes
+			System.out.println("Insira a avaliaÃ§Ã£o do serviÃ§o com um inteiro entre 0 e 100:");
 			avaliacao = input.nextInt();
 			
 			if (avaliacao >= 0 && avaliacao <= 25) {
@@ -35,10 +35,12 @@ public class Ex7 {
 				continue;
 			}
 																	
-			System.out.println("Deseja adicionar outra avaliação? Responda com 'sim' para iniciar a próxima avaliação e qualquer outra palavra para terminar o programa e visualizar os resultados.");  //perguntando ao usuario se deseja adicioar outra avaliação com controle de erro
-			proximaAvaliacao = input.nextLine();			
-				
-			} while (proximaAvaliacao == "sim");
+			do {
+				System.out.println("Deseja adicionar outra avaliaÃ§Ã£o? Responda com 'sim' para iniciar a prÃ³xima avaliaÃ§Ã£o e 'nÃ£o' para visualizar o resultado da pesquisa");
+				proximaAvaliacao = input.nextLine();
+				} while (proximaAvaliacao.equals("sim") == false && proximaAvaliacao.equals("nÃ£o") == false);
+			
+			} while (proximaAvaliacao.equals("sim") == true);
 		
 		input.close();
 		
@@ -47,10 +49,10 @@ public class Ex7 {
 		percentBom = boas/total*100;
 		percentOtimo = otimas/total*100;
 				
-		System.out.println(percentPessimo + "% dos funcionarious avaliou o serviço como péssimo.");
-		System.out.println(percentRuim + "% dos funcionarious avaliou o serviço como ruim.");
-		System.out.println(percentBom + "% dos funcionarious avaliou o serviço como bom.");
-		System.out.println(percentOtimo + "% dos funcionarious avaliou o serviço como ótimo.");
+		System.out.printf("%.2f%% dos funcionarious avaliou o serviÃ§o como pÃ©ssimo.%n", percentPessimo);
+		System.out.printf("%.2f%% dos funcionarious avaliou o serviÃ§o como ruim.%n", percentRuim);
+		System.out.printf("%.2f%% dos funcionarious avaliou o serviÃ§o como bom.%n", percentBom);
+		System.out.printf("%.2f%% dos funcionarious avaliou o serviÃ§o como Ã³timo.%n", percentOtimo);
 		
 	}
 }
